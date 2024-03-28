@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "https://brechidan.github.io/HD2Randomiser/static/css/main.412e916b.css",
+    "main.js": "https://brechidan.github.io/HD2Randomiser/static/js/main.fe5f339d.js",
+    "index.html": "https://brechidan.github.io/HD2Randomiser/index.html",
+    "main.412e916b.css.map": "https://brechidan.github.io/HD2Randomiser/static/css/main.412e916b.css.map",
+    "main.fe5f339d.js.map": "https://brechidan.github.io/HD2Randomiser/static/js/main.fe5f339d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.412e916b.css",
+    "static/js/main.fe5f339d.js"
+  ]
+}

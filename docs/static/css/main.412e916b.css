@@ -1,0 +1,2 @@
+.EquipmentBox:hover{filter:brightness(70%)}.hexagon{background:#000;position:relative}.double:after,.hexagon:before{content:"";position:absolute}.hexagon:before{background:#292929;height:calc(100% - 4px);left:2px;top:2px;width:calc(100% - 4px)}.double:after,.hexagon,.hexagon:before{-webkit-clip-path:polygon(25% 0,75% 0,100% 50%,75% 100%,25% 100%,0 50%);clip-path:polygon(25% 0,75% 0,100% 50%,75% 100%,25% 100%,0 50%)}body,html{margin:0}
+/*# sourceMappingURL=main.412e916b.css.map*/
