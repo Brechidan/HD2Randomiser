@@ -8,7 +8,7 @@ export default function ContentSettings({updateSettings, setBadSettings, UpdateL
   return (<>
     <HD2Accordion defaultExpanded disableGutters={true}>
       <HD2AccordionSummary expandIcon={<ExpandArrow/>} sx={{ paddingLeft: '0'}}>
-        <Typography sx={{ color: 'white' }} variant="h6">Countent Selection</Typography>
+        <Typography sx={{ color: 'white' }} variant="h6">Content Selection</Typography>
       </HD2AccordionSummary>
       <HD2AccordionDetails>
         {useSimple ? <SimpleSettings UpdateSettings={updateSettings} SetBadSettings={setBadSettings} UpdateLevel={UpdateLevel}/> : <ComplexSettings UpdateSettings={updateSettings}/>}

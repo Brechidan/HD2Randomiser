@@ -14,7 +14,7 @@ function ItemSelect({value, setValue, itemAmount}, props) {
     <option key={4} style={{ color: 'black' }} value={4}>4</option>,
   ]
 
-  const maxSelection = Math.min(5, Math.max(2, itemAmount + 1))
+  const maxSelection = itemAmount < 5 ? itemAmount: 5
 
   return (
     <HD2NativeSelect
@@ -32,9 +32,9 @@ function ItemSelect({value, setValue, itemAmount}, props) {
 }
 
 export default function LogicSettings({ UpdateLogicSettings }) {
-  const [backPackMax, setBackpackMax] = useState(1)
-  const [weaponMax, setWeaponMax] = useState(1)
-  const [vehicleMax, setVehicleMax] = useState(1)
+  const [backPackMax, setBackpackMax] = useState(4)
+  const [weaponMax, setWeaponMax] = useState(4)
+  const [vehicleMax, setVehicleMax] = useState(vehicles.length < 5 ? vehicles.length: 5)
   const [defensiveMax, setDefensiveMax] = useState(4)
   const [orbitalMax, setOrbitalMax] = useState(4)
   const [eagleMax, setEagleMax] = useState(4)
