@@ -212,9 +212,9 @@ function App() {
             <Stack>
               <img alt="Helldivers 2 Logo Icon" height={'50px'} style={{ objectFit: 'scale-down', margin: "8px" }}  src='./HD2logoIcon.png'/>
               <Typography variant="h4" textAlign={"center"}><span style={{ borderBottom: '2px white solid' }}>Randomiser</span></Typography>
-              <Stack direction={"row"} justifyContent={"center"} alignItems={"center"} gap={2}>
+              <Stack direction={isSmall ? "column" : "row"} justifyContent={"center"} alignItems={"center"} gap={isSmall ? 1 : 2}>
                 <Typography variant="h5">{"Settings"}</Typography>
-                <Typography variant="h5">{"|"}</Typography>
+                {!isSmall && <Typography variant="h5">{"|"}</Typography>}
                 <div>
                   <FormControlLabel control={<HD2Switch id="Settings Switch" checked={simple} onChange={handleSettingsChange}/>} label={<Typography variant="h5">Simple</Typography>} />
                 </div>
