@@ -57,7 +57,7 @@ export default function LogicSettings({ UpdateLogicSettings }) {
         <Typography sx={{ color: 'white' }} variant="h6">Randomness Logic</Typography>
       </HD2AccordionSummary>
       <HD2AccordionDetails>
-        <Typography sx={{ color: 'grey' }} variant="body2">Controls the maximum amount of each stratagem type</Typography>
+        <Typography sx={{ color: 'grey' }} variant="body2">Controls the maximum possible amount of each stratagem type</Typography>
         <table><tbody>
           <tr>
             <td style={{ paddingRight: '20px' }}><Typography variant="body2">Backpacks</Typography></td>
