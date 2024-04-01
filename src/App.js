@@ -211,12 +211,12 @@ function App() {
           <MyPaper>
             <Stack>
               <img alt="Helldivers 2 Logo Icon" height={'50px'} style={{ objectFit: 'scale-down', margin: "8px" }}  src='./HD2logoIcon.png'/>
-              <Typography variant="h4" textAlign={"center"}>Randomiser</Typography>
+              <Typography variant="h4" textAlign={"center"}><span style={{ borderBottom: '2px white solid' }}>Randomiser</span></Typography>
               <Stack direction={"row"} justifyContent={"center"} alignItems={"center"} gap={2}>
-                <Typography>{"Settings"}</Typography>
-                <Typography>{"|"}</Typography>
+                <Typography variant="h5">{"Settings"}</Typography>
+                <Typography variant="h5">{"|"}</Typography>
                 <div>
-                  <FormControlLabel control={<HD2Switch id="Settings Switch" checked={simple} onChange={handleSettingsChange}/>} label="Simple" />
+                  <FormControlLabel control={<HD2Switch id="Settings Switch" checked={simple} onChange={handleSettingsChange}/>} label={<Typography variant="h5">Simple</Typography>} />
                 </div>
               </Stack>
               <ContentSettings useSimple={simple} updateSettings={UpdateSettings} setBadSettings={setBadSettings} UpdateLevel={UpdateLevel}/>
