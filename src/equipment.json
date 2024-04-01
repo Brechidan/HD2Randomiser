@@ -1,4 +1,5 @@
 {
+  "release": "1.000.104",
   "stratagems": [
     {"name": "Machine Gun", "level": 0, "src": "./stratagems/supply/weapons/MG-43icon.webp"},
     {"name": "Anti-Material Rifle", "level": 2, "src": "./stratagems/supply/weapons/APW-1icon.webp"},
@@ -47,7 +48,9 @@
     {"name": "Autocannon Sentry", "level": 13, "src": "./stratagems/defensive/Autocannoasentryicon.webp"},
     {"name": "Rocket Sentry", "level": 15, "src": "./stratagems/defensive/Missilesentryicon.webp"},
     {"name": "EMS Mortar Sentry","level": 20, "src": "./stratagems/defensive/EMSmortaricon.webp"},
-    {"name": "Patriot Exosuit", "level": 25, "src": "./stratagems/supply/vehicles/EXO45icon.webp"}
+    {"name": "Patriot Exosuit", "level": 25, "src": "./stratagems/supply/vehicles/EXO45icon.webp"},
+    {"name": "Quasar Cannon", "level": 18, "src": "./stratagems/supply/weapons/LAS99Icon.webp"},
+    {"name": "Heavy Machine Gun", "level": 12, "src": "./stratagems/supply/weapons/MG206Icon.webp"}
   ],
   "base": {
     "primary": [

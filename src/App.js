@@ -285,6 +285,8 @@ function App() {
       </Stack>
       <Dialog open={infoOpen} onClose={handleInfoClose}>
         <DialogContent>
+          <Typography sx={{fontFamily: 'Verdana', fontWeight: 'bold'}} variant="body1">{`Content release included: ${equipment.release}`}</Typography>
+          <br/>
           <Typography sx={{fontFamily: 'Verdana'}} variant="body1">
             {`Thanks for checking out my randomiser :) hope you like it. The source code is `}<a href="https://github.com/Brechidan/HD2Randomiser">here</a>{`. If you find any bugs/issues please DM me or add an issue on the github.
             Font (Name Smile) from `}<a href="https://www.dafont.com/name-smile.font">here</a>{`, created by Chequered Ink.`}
