@@ -1,51 +1,14 @@
-import styled from "@emotion/styled";
 import { TabContext, TabPanel } from "@mui/lab";
-import { Accordion, AccordionDetails, AccordionSummary, Box, FormControlLabel, Stack, Tab, Tabs, Typography } from "@mui/material";
+import { Box, FormControlLabel, Stack, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 
-import HD2Checkbox from "./HD2Checkbox";
-import ExpandArrow from "./ExpandArrow";
-import HD2Button from "./HD2Button";
+import HD2Checkbox from "../HD2Checkbox.js";
+import ExpandArrow from "../ExpandArrow.js";
+import HD2Button from "../HD2Button.js";
+import { HD2Accordion, HD2AccordionDetails, HD2AccordionSummary } from "../HD2Accordion.js";
+import { HD2Tab, HD2Tabs } from "../HD2Tabs.js";
 
-import {boosters, primarys, secondarys, grenades, armours, defensive, offensive, supply} from '../equipmentLists.js';
-
-// mui component styling
-const StyledTab = styled(Tab)(({ theme }) => ({
-  '&.MuiTab-root': {
-    color: 'white',
-    '&.Mui-selected': {
-      color: 'Black',
-      backgroundColor: 'yellow'
-    },
-  },
-}))
-
-const StyledTabs= styled(Tabs)(({ theme }) => ({
-  '& .MuiTabs-indicator': {
-    backgroundColor: 'black',
-  },
-}))
-
-const StyledAccordion = styled(Accordion)(({ theme }) => ({
-  '&.MuiAccordion-root': {
-    backgroundColor: 'transparent !important',
-    padding: 0,
-  },
-}))
-
-const StyledAccordionSummary = styled(AccordionSummary)(({ theme }) => ({
-  '&.MuiAccordionSummary-root': {
-    margin: '10px 0px',
-    color: 'white',
-  },
-}))
-
-const StyledAccordionDetails = styled(AccordionDetails)(({ theme }) => ({
-  '&.MuiAccordionDetails-root': {
-    padding: 0,
-    color: 'white',
-  },
-}))
+import {boosters, primarys, secondarys, grenades, armours, defensive, offensive, supply} from '../../equipmentLists.js';
 
 const createSelectedObj = (selection) => {
   const selected = {
@@ -69,7 +32,7 @@ const createSelectedObj = (selection) => {
 }
 
 // ########### COMPONENT #################
-export default function SettingsTabs(props) {
+export default function ComplexSettings(props) {
   const {UpdateSettings} = props
 
   const [tabVal, setTabVal] = useState("1")
@@ -98,30 +61,30 @@ export default function SettingsTabs(props) {
   }, [selected])
 
   return (<>
-    <StyledAccordion defaultExpanded disableGutters={true}>
-      <StyledAccordionSummary expandIcon={<ExpandArrow/>}>
+    <HD2Accordion defaultExpanded disableGutters={true}>
+      <HD2AccordionSummary expandIcon={<ExpandArrow/>}>
         <Typography sx={{ color: 'white' }}>Complex Active!</Typography>
-      </StyledAccordionSummary>
-      <StyledAccordionDetails>
+      </HD2AccordionSummary>
+      <HD2AccordionDetails>
         <TabContext value={tabVal}>
           <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-            <StyledTabs variant="scrollable" value={tabVal} onChange={handleTabChange} scrollButtons={true} allowScrollButtonsMobile={true}>
-              <StyledTab label="Stratagems" value="1" />
-              <StyledTab label="Boosters" value="2" />
-              <StyledTab label="Primary" value="3" />
-              <StyledTab label="Secondary" value="4" />
-              <StyledTab label="Grenade" value="5" />
-              <StyledTab label="Armour" value="6" />
-            </StyledTabs>
+            <HD2Tabs variant="scrollable" value={tabVal} onChange={handleTabChange} scrollButtons={true} allowScrollButtonsMobile={true}>
+              <HD2Tab label="Stratagems" value="1" />
+              <HD2Tab label="Boosters" value="2" />
+              <HD2Tab label="Primary" value="3" />
+              <HD2Tab label="Secondary" value="4" />
+              <HD2Tab label="Grenade" value="5" />
+              <HD2Tab label="Armour" value="6" />
+            </HD2Tabs>
           </Box>
           <TabPanel value="1">
             <TabContext value={stratTabVal}>
             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-              <StyledTabs variant="scrollable" value={stratTabVal} onChange={handleStratTabChange} scrollButtons={true} allowScrollButtonsMobile={true}>
-                <StyledTab label="Supply" value="1" />
-                <StyledTab label="Offensive" value="2" />
-                <StyledTab label="Defensive" value="3" />
-              </StyledTabs>
+              <HD2Tabs variant="scrollable" value={stratTabVal} onChange={handleStratTabChange} scrollButtons={true} allowScrollButtonsMobile={true}>
+                <HD2Tab label="Supply" value="1" />
+                <HD2Tab label="Offensive" value="2" />
+                <HD2Tab label="Defensive" value="3" />
+              </HD2Tabs>
             </Box>
             <TabPanel value="1"><Stack>{supply.map((item, index) => <FormControlLabel key={index} control={<HD2Checkbox checked={selected.strats[item.name]} onChange={(e) => handleChangeSelected(e, 'strats', item.name)}/>} label={item.name}/>)}</Stack></TabPanel>
             <TabPanel value="2"><Stack>{offensive.map((item, index) => <FormControlLabel key={index} control={<HD2Checkbox checked={selected.strats[item.name]} onChange={(e) => handleChangeSelected(e, 'strats', item.name)}/>} label={item.name}/>)}</Stack></TabPanel>
@@ -138,7 +101,7 @@ export default function SettingsTabs(props) {
           <HD2Button style={{ flexGrow: 1, margin: '0px 10px' }} onClick={handleTurnOnAll}>Add All Items</HD2Button>
           <HD2Button style={{ flexGrow: 1, margin: '0px 10px' }} onClick={handleTurnOffAll}>Remove All Items</HD2Button>
         </Stack>
-      </StyledAccordionDetails>
-    </StyledAccordion>
+      </HD2AccordionDetails>
+    </HD2Accordion>
   </>)
 }

@@ -8,11 +8,13 @@ import { useTheme } from "@emotion/react";
 import HD2Switch from "./components/HD2Switch";
 import HD2Button from "./components/HD2Button";
 import { useMediaQuery } from "react-responsive";
-import SettingsTabs from "./components/SettingsTabs";
+import ComplexSettings from "./components/settings/ComplexSettings";
 
 import equipment from "./equipment.json";
 import { allEquipment } from "./equipmentLists";
 import HD2TextField from "./components/HD2TextField";
+import LogicSettings from "./components/settings/LogicSettings";
+import SimpleSettings from "./components/settings/SimpleSettings";
 
 const ArrRandom = (arr) => arr[Math.floor(Math.random() * arr.length)] 
 
@@ -33,64 +35,31 @@ function App() {
   const [simple, setSimple] = useState(true)
   const handleSettingsChange = () => setSimple(simple => !simple)
 
-  const [SCActive, setSCActive] = useState(false)
-  const [HMActive, setHMActive] = useState(true)
-  const [SVActive, setSVACtive] = useState(true)
-  const [CEActive, setCEActive] = useState(false)
-  const handleSCtoggle = () => setSCActive((SCActive) => !SCActive)
-  const handleHMtoggle = () => setHMActive((HMActive) => !HMActive)
-  const handleSVtoggle = () => setSVACtive((SVActive) => !SVActive)
-  const handleCEtoggle = () => setCEActive((CEActive) => !CEActive)
-
-  const [level, setLevel] = useState("25")
-  const handleLevelChange = (event) => {
-    setLevel(event.target.value)
-  }
-
   const [badSettings, setBadSettings] = useState(false)
-
-  useEffect(() => {
-    if (parseInt(level) < 0 || parseInt(level) > 50 || isNaN(parseInt(level))) {
-      setBadSettings(true)
-    } else {
-      setBadSettings(false)
-    }
-  }, [level])
 
   const [selection, setSelection] = useState({})
   const UpdateSettings = (aSelection) => {
     setSelection(aSelection)
   }
 
+  const [logicSelection, setLogicSelection] = useState({})
+  const UpdateLogicSettings = (aSelection) => {
+    setLogicSelection(aSelection)
+  }
+
   //Randomiser
   const [loadout, setLoadout] = useState(undefined)
 
   const getEquipArr = (type) => {
-    // if complex get selection of type
-    if (!simple) {
-      return Object.keys(selection[type]).filter((name) => selection[type][name]).map((name => allEquipment[type][name] ))
+    if (selection[type] == undefined) {
+      return []
     }
-
-    const possibleDubArr = [
-      ...(equipment.base[type] !== undefined ? equipment.base[type] : []),
-      ...(SCActive && equipment.superCitizen[type] !== undefined ? equipment.superCitizen[type] : []),
-      ...(HMActive ? equipment.helldiversMobilize[type] : []),
-      ...(SVActive ? equipment.steeledVeterans[type] : []),
-      ...(CEActive ? equipment.cuttingEdge[type] : []),
-    ]
-    // remove possible dup items (only happens for armour when SC and HM are both on ;-;)
-    const nonDubArr = []
-    possibleDubArr.forEach((elem) => {
-      if (!nonDubArr.includes(elem)) {
-        nonDubArr.push(elem)
-      }
-    })
-    return nonDubArr;
+    return Object.keys(selection[type]).filter((name) => selection[type][name]).map((name => allEquipment[type][name] ))
   }
 
-  const getStratSelection = () => {
+  const getStratSelection = (choosenStrats, LogicSettings) => {
     if (simple) {
-      return equipment.stratagems.filter(item => item.level <= parseInt(level))
+      return equipment.stratagems.filter(item => item.level <= parseInt(25))
     } else {
       return equipment.stratagems.filter(item => selection.strats[item.name])
     }
@@ -236,15 +205,9 @@ function App() {
                   <FormControlLabel control={<HD2Switch checked={simple} onChange={handleSettingsChange}/>} label="Simple" />
                 </div>
               </Stack>
-              {simple ? (
-                <FormGroup>
-                <HD2TextField  sx={{ input: {color: 'white'}, label: {color: 'grey'} }} value={level} onChange={handleLevelChange} type="number" label="Level" variant="standard" error={badSettings} helperText={badSettings ? "Must have 0 ≤ Level ≤ 50." : ''}/>
-                <FormControlLabel control={<HD2Switch checked={SCActive} onChange={handleSCtoggle}/>} label="Super Citizen" />
-                <FormControlLabel control={<HD2Switch checked={HMActive} onChange={handleHMtoggle}/>} label="Helldivers Mobilize" />
-                <FormControlLabel control={<HD2Switch checked={SVActive} onChange={handleSVtoggle}/>} label="Steeled Veterans" />
-                <FormControlLabel control={<HD2Switch checked={CEActive} onChange={handleCEtoggle}/>} label="Cutting Edge" />
-              </FormGroup>
-              ): <SettingsTabs UpdateSettings={UpdateSettings}/>}
+              <Typography sx={{ color: 'white' }} variant="h6">Content Selection</Typography>
+              {simple ? <SimpleSettings UpdateSettings={UpdateSettings} SetBadSettings={setBadSettings}/> : <ComplexSettings UpdateSettings={UpdateSettings}/>}
+              <LogicSettings UpdateLogicSettings={UpdateLogicSettings}/>
               <HD2Button variant="contained" onClick={handleRandomise} disabled={badSettings} sx={{ marginTop: '15px' }}>Randomise</HD2Button>
             </Stack>
           </MyPaper>
