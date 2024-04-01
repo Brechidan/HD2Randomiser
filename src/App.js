@@ -1,5 +1,5 @@
-import { Button, Dialog, DialogActions, DialogContent, FormControlLabel, FormGroup, Paper, Stack, Typography } from "@mui/material";
-import { useEffect, useState } from "react";
+import { Button, Dialog, DialogActions, DialogContent, FormControlLabel, Paper, Stack, Typography } from "@mui/material";
+import { useState } from "react";
 import StratagemImg from "./components/StratagemImg";
 import {BorderBoxRL, BorderBoxTB} from "./components/BorderBox";
 import EquipmentBox from "./components/EquipmentBox";
@@ -8,13 +8,12 @@ import { useTheme } from "@emotion/react";
 import HD2Switch from "./components/HD2Switch";
 import HD2Button from "./components/HD2Button";
 import { useMediaQuery } from "react-responsive";
-import ComplexSettings from "./components/settings/ComplexSettings";
+import { allEquipment } from "./equipmentLists";
+import LogicSettings from "./components/settings/LogicSettings";
+import ContentSettings from "./components/settings/Settings";
 
 import equipment from "./equipment.json";
-import { allEquipment } from "./equipmentLists";
-import HD2TextField from "./components/HD2TextField";
-import LogicSettings from "./components/settings/LogicSettings";
-import SimpleSettings from "./components/settings/SimpleSettings";
+
 
 const ArrRandom = (arr) => arr[Math.floor(Math.random() * arr.length)] 
 
@@ -23,6 +22,24 @@ const MyPaper = (props) => {
   return (
     <Paper elevation={3} sx={{ padding: '10px', width: "100%", backgroundColor: theme.menuColors.menuBackgroundColor, color: 'white', zIndex: '5' }} {...props}>{props.children}</Paper>
   )
+}
+
+const loudoutUndefinedRename = (loadout) => {
+  if (loadout.armour === undefined) {
+    loadout.armour = "None (Starter)"
+  }
+  if (loadout.primary === undefined) {
+    loadout.primary = "None (Starter)"
+  }
+  if (loadout.grenade === undefined) {
+    loadout.grenade = "None (Starter)"
+  }
+  if (loadout.secondary === undefined) {
+    loadout.secondary = "None (Starter)"
+  }
+  if (loadout.booster === undefined) {
+    loadout.booster = {"name": "None"}
+  }
 }
 
 function App() {
@@ -35,13 +52,16 @@ function App() {
   const [simple, setSimple] = useState(true)
   const handleSettingsChange = () => setSimple(simple => !simple)
 
+  const [level, setLevel] = useState(25)
+  const UpdateLevel = (aLevel) => {
+    setLevel(aLevel)
+  }
   const [badSettings, setBadSettings] = useState(false)
 
   const [selection, setSelection] = useState({})
   const UpdateSettings = (aSelection) => {
     setSelection(aSelection)
   }
-
   const [logicSelection, setLogicSelection] = useState({})
   const UpdateLogicSettings = (aSelection) => {
     setLogicSelection(aSelection)
@@ -51,30 +71,58 @@ function App() {
   const [loadout, setLoadout] = useState(undefined)
 
   const getEquipArr = (type) => {
-    if (selection[type] == undefined) {
-      return []
+    if (selection[type] === undefined) {
+      return allEquipment[type]
     }
     return Object.keys(selection[type]).filter((name) => selection[type][name]).map((name => allEquipment[type][name] ))
   }
 
-  const getStratSelection = (choosenStrats, LogicSettings) => {
-    if (simple) {
-      return equipment.stratagems.filter(item => item.level <= parseInt(25))
-    } else {
-      return equipment.stratagems.filter(item => selection.strats[item.name])
+  const getStratSelection = (choosenStrats, logicSettings) => {
+    const stratagems = simple ? equipment.stratagems.filter(item => item.level <= parseInt(level)) : equipment.stratagems.filter(item => selection.strats[item.name])
+
+    const stratCount = {
+      defensive: 0,
+      eagle: 0,
+      orbital: 0,
+      weapons: 0,
+      vehicles: 0,
+      backpacks: 0,
     }
+
+    const getType = (itemSrc) => {
+      if (itemSrc.includes('defensive')) {
+        return 'defensive'
+      } if (itemSrc.includes('eagle')) {
+        return 'eagle'
+      } else if (itemSrc.includes('orbital')) {
+        return 'orbital'
+      } if (itemSrc.includes('weapons')) {
+        return 'weapons'
+      } else if (itemSrc.includes('vehicles')) {
+        return 'vehicles'
+      } else if (itemSrc.includes('backpacks')) {
+        return 'backpacks'
+      } else {
+        console.warn(`Unknown Item Type - ${itemSrc}`);
+      }
+    }
+
+    choosenStrats.forEach((strat) => {
+      stratCount[getType(strat.src)]++
+    });
+
+    return stratagems.filter(item => choosenStrats.indexOf(item) === -1 && stratCount[getType(item.src)] < logicSettings[getType(item.src)])
   }
 
   const handleRandomise = () => {
     const newStrats = []
-    const stratSelection = getStratSelection()
-    let validStrats = stratSelection.filter(item => newStrats.indexOf(item) === -1)
+    let validStrats = getStratSelection(newStrats, logicSelection)
     while (newStrats.length < 4 && validStrats.length > 0) {
       newStrats.push(ArrRandom(validStrats))
-      validStrats = stratSelection.filter(item => newStrats.indexOf(item) === -1)
+      validStrats = getStratSelection(newStrats, logicSelection)
     }
 
-    const newLoadout = {
+    let newLoadout = {
       strats: newStrats,
       booster: ArrRandom(getEquipArr("booster")),
       primary: ArrRandom(getEquipArr("primary")),
@@ -82,22 +130,7 @@ function App() {
       grenade: ArrRandom(getEquipArr("grenade")),
       armour: ArrRandom(getEquipArr("armour")),
     }
-    //check for armour and booster as they have 'no' base items
-    if (newLoadout.armour === undefined) {
-      newLoadout.armour = "None (Starter)"
-    }
-    if (newLoadout.primary === undefined) {
-      newLoadout.primary = "None (Starter)"
-    }
-    if (newLoadout.grenade === undefined) {
-      newLoadout.grenade = "None (Starter)"
-    }
-    if (newLoadout.secondary === undefined) {
-      newLoadout.secondary = "None (Starter)"
-    }
-    if (newLoadout.booster === undefined) {
-      newLoadout.booster = {"name": "None"}
-    }
+    loudoutUndefinedRename(newLoadout)
 
     setLoadout(newLoadout);
   }
@@ -118,9 +151,9 @@ function App() {
 
     switch (item) {
       case "strats":
-        const stratSelection = getStratSelection()
         const otherStrats = loadout.strats.filter((item, i) => i !== index)
-        newLoadout["strats"][index] =ArrRandom(stratSelection.filter(item => otherStrats.indexOf(item) === -1));
+        const stratSelection = getStratSelection(otherStrats, logicSelection)
+        newLoadout["strats"][index] = ArrRandom(stratSelection.filter(item => otherStrats.indexOf(item) === -1));
         break;
       case "booster":
         newLoadout["booster"] = ArrRandom(getEquipArr("booster"));
@@ -141,29 +174,10 @@ function App() {
         throw Error("Reroll: Bad Item Type")
     }
     //check for armour and booster as they have 'no' base items
-    if (newLoadout.armour === undefined) {
-      newLoadout.armour = "None (Starter)"
-    }
-    if (newLoadout.primary === undefined) {
-      newLoadout.primary = "None (Starter)"
-    }
-    if (newLoadout.grenade === undefined) {
-      newLoadout.grenade = "None (Starter)"
-    }
-    if (newLoadout.secondary === undefined) {
-      newLoadout.secondary = "None (Starter)"
-    }
-    if (newLoadout.booster === undefined) {
-      newLoadout.booster = {"name": "None"}
-    }
+    loudoutUndefinedRename(newLoadout)
 
     setLoadout(newLoadout)
   }
-
-  useEffect(() => {
-    handleRandomise()
-  // eslint-disable-next-line
-  }, [])
 
   const theme = useTheme()
   const isSmall = useMediaQuery({ query: `(max-width: ${theme.smallSize})` })
@@ -173,7 +187,7 @@ function App() {
       <img alt="Helldivers Splash Screen" src="./HD2SplashScreen.jpg" style={{
         position: 'absolute',
         width: '100%',
-        height: '2300px',
+        height: isSmall ? '2800px' : '2500px',
         zIndex: '0',
         objectFit: 'cover'
       }}/>
@@ -202,16 +216,14 @@ function App() {
                 <Typography>{"Settings"}</Typography>
                 <Typography>{"|"}</Typography>
                 <div>
-                  <FormControlLabel control={<HD2Switch checked={simple} onChange={handleSettingsChange}/>} label="Simple" />
+                  <FormControlLabel control={<HD2Switch id="Settings Switch" checked={simple} onChange={handleSettingsChange}/>} label="Simple" />
                 </div>
               </Stack>
-              <Typography sx={{ color: 'white' }} variant="h6">Content Selection</Typography>
-              {simple ? <SimpleSettings UpdateSettings={UpdateSettings} SetBadSettings={setBadSettings}/> : <ComplexSettings UpdateSettings={UpdateSettings}/>}
+              <ContentSettings useSimple={simple} updateSettings={UpdateSettings} setBadSettings={setBadSettings} UpdateLevel={UpdateLevel}/>
               <LogicSettings UpdateLogicSettings={UpdateLogicSettings}/>
               <HD2Button variant="contained" onClick={handleRandomise} disabled={badSettings} sx={{ marginTop: '15px' }}>Randomise</HD2Button>
             </Stack>
           </MyPaper>
-
           {loadout !== undefined && <MyPaper>
             <Stack direction={"column"} alignItems={"stretch"}>
               <BorderBoxTB type="bottom" sx={{ height: '10px' }}/>

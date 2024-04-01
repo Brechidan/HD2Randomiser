@@ -6,7 +6,7 @@ import HD2TextField from "../HD2TextField";
 
 import equipment from "../../equipment.json";
 
-export default function SimpleSettings({UpdateSettings, SetBadSettings}, props) {
+export default function SimpleSettings({UpdateSettings, SetBadSettings, UpdateLevel}, props) {
   const [SCActive, setSCActive] = useState(false)
   const [HMActive, setHMActive] = useState(true)
   const [SVActive, setSVACtive] = useState(true)
@@ -31,6 +31,7 @@ export default function SimpleSettings({UpdateSettings, SetBadSettings}, props) 
       SetBadSettings(false)
       setLocalBadSettings(false)
     }
+    UpdateLevel(level)
   // eslint-disable-next-line
   }, [level])
 
@@ -72,6 +73,7 @@ export default function SimpleSettings({UpdateSettings, SetBadSettings}, props) 
     })
 
     UpdateSettings(selected)
+  // eslint-disable-next-line
   }, [SCActive, HMActive, SVActive, CEActive])
 
   return (<>

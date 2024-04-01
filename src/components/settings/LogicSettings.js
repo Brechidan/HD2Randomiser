@@ -5,9 +5,7 @@ import { HD2NativeSelect } from "../HD2NativeSelect";
 import { useEffect, useState } from "react";
 import { backpacks, defensive, eagle, orbital, vehicles, weapons } from "../../equipmentLists";
 
-function ItemSelect(props) {
-  const {value, setValue, itemAmount} = props
-
+function ItemSelect({value, setValue, itemAmount}, props) {
   const options = [
     <option key={0} style={{ color: 'black' }} value={0}>0</option>,
     <option key={1} style={{ color: 'black' }} value={1}>1</option>,
@@ -25,8 +23,8 @@ function ItemSelect(props) {
       onChange={(e) => setValue(e.target.value)}
       inputProps={{
         name: 'age',
-        id: 'uncontrolled-native',
       }}
+      {...props}
     >
       {options.filter((option, index) => index <= maxSelection)}
     </HD2NativeSelect>
@@ -34,8 +32,8 @@ function ItemSelect(props) {
 }
 
 export default function LogicSettings({ UpdateLogicSettings }) {
-  const [backPackMax, setBackpackMax] = useState(4)
-  const [weaponMax, setWeaponMax] = useState(4)
+  const [backPackMax, setBackpackMax] = useState(1)
+  const [weaponMax, setWeaponMax] = useState(1)
   const [vehicleMax, setVehicleMax] = useState(1)
   const [defensiveMax, setDefensiveMax] = useState(4)
   const [orbitalMax, setOrbitalMax] = useState(4)
@@ -43,46 +41,47 @@ export default function LogicSettings({ UpdateLogicSettings }) {
 
   useEffect(() => {
     UpdateLogicSettings({
-      backPackMax: parseInt(backPackMax),
-      weaponMax: parseInt(weaponMax),
-      vehicleMax: parseInt(vehicleMax),
-      defensiveMax: parseInt(defensiveMax),
-      orbitalMax: parseInt(orbitalMax),
-      eagleMax: parseInt(eagleMax),
+      backpacks: parseInt(backPackMax),
+      weapons: parseInt(weaponMax),
+      vehicles: parseInt(vehicleMax),
+      defensive: parseInt(defensiveMax),
+      orbital: parseInt(orbitalMax),
+      eagle: parseInt(eagleMax),
     })
+  // eslint-disable-next-line
   }, [backPackMax, weaponMax, vehicleMax, defensiveMax, orbitalMax, eagleMax])
 
   return (<>
-    <HD2Accordion defaultExpanded disableGutters={true}>
+    <HD2Accordion disableGutters={true}>
       <HD2AccordionSummary expandIcon={<ExpandArrow/>} sx={{ paddingLeft: '0'}}>
         <Typography sx={{ color: 'white' }} variant="h6">Randomness Logic</Typography>
       </HD2AccordionSummary>
       <HD2AccordionDetails>
-        <Typography sx={{ color: 'grey' }} variant="body2">Controls the maximum amount of the certain stratagem type.</Typography>
+        <Typography sx={{ color: 'grey' }} variant="body2">Controls the maximum amount of each stratagem type</Typography>
         <table><tbody>
           <tr>
-            <td style={{ paddingRight: '20px' }}><Typography variant="body2">BackPacks</Typography></td>
-            <td><ItemSelect value={backPackMax} setValue={setBackpackMax} itemAmount={backpacks.length} /></td>
+            <td style={{ paddingRight: '20px' }}><Typography variant="body2">Backpacks</Typography></td>
+            <td><ItemSelect id="Maximum Backpack Stratagems" value={backPackMax} setValue={setBackpackMax} itemAmount={backpacks.length} /></td>
           </tr>
           <tr>
             <td><Typography variant="body2">Weapons</Typography></td>
-            <td><ItemSelect value={weaponMax} setValue={setWeaponMax} itemAmount={weapons.length} /></td>
+            <td><ItemSelect id="Maximum Weapon Stratagems" value={weaponMax} setValue={setWeaponMax} itemAmount={weapons.length} /></td>
           </tr>
           <tr>
             <td><Typography variant="body2">Vehicles</Typography></td>
-            <td><ItemSelect value={vehicleMax} setValue={setVehicleMax} itemAmount={vehicles.length} /></td>
+            <td><ItemSelect id="Maximum Vehicle Stratagems" value={vehicleMax} setValue={setVehicleMax} itemAmount={vehicles.length} /></td>
           </tr>
           <tr>
             <td><Typography variant="body2">Defensive</Typography></td>
-            <td><ItemSelect value={defensiveMax} setValue={setDefensiveMax} itemAmount={defensive.length} /></td>
+            <td><ItemSelect id="Maximum Defensive Stratagems" value={defensiveMax} setValue={setDefensiveMax} itemAmount={defensive.length} /></td>
           </tr>
           <tr>
             <td><Typography variant="body2">Eagle</Typography></td>
-            <td><ItemSelect value={eagleMax} setValue={setEagleMax} itemAmount={eagle.length} /></td>
+            <td><ItemSelect id="Maximum Eagle Stratagems" value={eagleMax} setValue={setEagleMax} itemAmount={eagle.length} /></td>
           </tr>
           <tr>
             <td><Typography variant="body2">Orbital</Typography></td>
-            <td><ItemSelect value={orbitalMax} setValue={setOrbitalMax} itemAmount={orbital.length} /></td>
+            <td><ItemSelect id="Maximum Orbital Stratagems" value={orbitalMax} setValue={setOrbitalMax} itemAmount={orbital.length} /></td>
           </tr>
         </tbody></table>
       </HD2AccordionDetails>
