@@ -4,19 +4,17 @@ import { FormControlLabel, FormGroup } from "@mui/material";
 import HD2Switch from "../HD2Switch";
 import HD2TextField from "../HD2TextField";
 
-import equipment from "../../equipment.json";
+import equipment from '../../equipment.json';
 
 export default function SimpleSettings({UpdateSettings, SetBadSettings, UpdateLevel}, props) {
-  const [SCActive, setSCActive] = useState(false)
-  const [HMActive, setHMActive] = useState(true)
-  const [SVActive, setSVACtive] = useState(true)
-  const [CEActive, setCEActive] = useState(false)
-  const handleSCtoggle = () => setSCActive((SCActive) => !SCActive)
-  const handleHMtoggle = () => setHMActive((HMActive) => !HMActive)
-  const handleSVtoggle = () => setSVACtive((SVActive) => !SVActive)
-  const handleCEtoggle = () => setCEActive((CEActive) => !CEActive)
+  const [packagesActive, setPackagesActive] = useState(equipment.packages.map((aPackage) => true))
+  const handlePackageChange = (packageID) => () => {
+    const newActive = [...packagesActive]
+    newActive[packageID] = !newActive[packageID]
+    setPackagesActive(newActive)
+  }
 
-  const [level, setLevel] = useState("25")
+  const [level, setLevel] = useState("50")
   const handleLevelChange = (event) => {
     setLevel(event.target.value)
   }
@@ -24,7 +22,7 @@ export default function SimpleSettings({UpdateSettings, SetBadSettings, UpdateLe
   const [localBadSettings, setLocalBadSettings] = useState(false)
 
   useEffect(() => {
-    if (parseInt(level) < 0 || parseInt(level) > 50 || isNaN(parseInt(level))) {
+    if (parseInt(level) < 0 || parseInt(level) > 150 || isNaN(parseInt(level))) {
       SetBadSettings(true)
       setLocalBadSettings(true)
     } else {
@@ -36,20 +34,7 @@ export default function SimpleSettings({UpdateSettings, SetBadSettings, UpdateLe
   }, [level])
 
   useEffect(() => {
-    const packages = [equipment.base]
-
-    if (SCActive) {
-      packages.push(equipment.superCitizen)
-    }
-    if (HMActive) {
-      packages.push(equipment.helldiversMobilize)
-    }
-    if (SVActive) {
-      packages.push(equipment.steeledVeterans)
-    }
-    if (CEActive) {
-      packages.push(equipment.cuttingEdge)
-    }
+    const packages = equipment.packages.filter((val, index) => packagesActive[index])
 
     const selected = {
       strats: stratagems,
@@ -60,29 +45,38 @@ export default function SimpleSettings({UpdateSettings, SetBadSettings, UpdateLe
       armour: {}
     }
 
-    packages.forEach((aPackage) => {
-      Object.keys(aPackage).forEach((key) => {
-        aPackage[key].forEach((item) => {
-          if (key === 'booster') {
-            selected[key][item.name] = item
-          } else {
-            selected[key][item] = item
-          }
-        })
+    const addItems = (type) => {
+      const items = []
+      packages.forEach((aPackage) => {
+        if (aPackage[type] !== undefined) {
+          aPackage[type].forEach((item) => {
+            if (!items.includes(item)) {
+              items.push(item)
+              selected[type][type === 'booster' ? item.name : item] = item
+            }
+          })
+        }
       })
-    })
+    }
+
+    addItems('booster')
+    addItems('primary')
+    addItems('secondary')
+    addItems('grenade')
+    addItems('armour')
+
+    console.log(selected.armour);
 
     UpdateSettings(selected)
   // eslint-disable-next-line
-  }, [SCActive, HMActive, SVActive, CEActive])
+  }, [packagesActive])
 
   return (<>
       <FormGroup>
-        <HD2TextField  sx={{ input: {color: 'white'}, label: {color: 'grey'} }} value={level} onChange={handleLevelChange} type="number" label="Level" variant="standard" error={localBadSettings} helperText={localBadSettings ? "Must have 0 ≤ Level ≤ 50." : ''}/>
-        <FormControlLabel control={<HD2Switch checked={SCActive} onChange={handleSCtoggle}/>} label="Super Citizen" />
-        <FormControlLabel control={<HD2Switch checked={HMActive} onChange={handleHMtoggle}/>} label="Helldivers Mobilize" />
-        <FormControlLabel control={<HD2Switch checked={SVActive} onChange={handleSVtoggle}/>} label="Steeled Veterans" />
-        <FormControlLabel control={<HD2Switch checked={CEActive} onChange={handleCEtoggle}/>} label="Cutting Edge" />
+        <HD2TextField  sx={{ input: {color: 'white'}, label: {color: 'grey'} }} value={level} onChange={handleLevelChange} type="number" label="Level" variant="standard" error={localBadSettings} helperText={localBadSettings ? "Must have 0 ≤ Level ≤ 150." : ''}/>
+        {equipment.packages.map((aPackage, index) => {
+          return <FormControlLabel key={index} control={<HD2Switch checked={packagesActive[index]} onChange={handlePackageChange(index)}/>} label={aPackage.name} />
+        })}
       </FormGroup>
   </>)
 }

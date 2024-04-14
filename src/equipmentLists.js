@@ -1,11 +1,10 @@
 import equipment from "./equipment.json";
 
 // create item lists outside of func so they don't regen on rerender
-const packages = [equipment.base, equipment.superCitizen, equipment.helldiversMobilize, equipment.steeledVeterans, equipment.cuttingEdge]
 
 const getItems = (type) => {
-  const packageMap = packages.flatMap((aPackage) => {
-    const items = []
+  const items = []
+  equipment.packages.forEach((aPackage) => {
     if (aPackage[type] !== undefined) {
       aPackage[type].forEach((item) => {items.push(item)})
     }
@@ -13,7 +12,7 @@ const getItems = (type) => {
   })
   //need to check for dubs
   const result = []
-  packageMap.forEach((item) => {
+  items.forEach((item) => {
     if (!result.includes(item)) {
       result.push(item)
     }

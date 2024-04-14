@@ -52,98 +52,126 @@
     {"name": "Quasar Cannon", "level": 18, "src": "./stratagems/supply/weapons/LAS99Icon.webp"},
     {"name": "Heavy Machine Gun", "level": 12, "src": "./stratagems/supply/weapons/MG206Icon.webp"}
   ],
-  "base": {
-    "primary": [
-      "Liberator"
-    ],
-    "secondary": [
-      "Peacemaker"
-    ],
-    "grenade": [
-      "High Explosive"
-    ]
-  },
-  "superCitizen": {
-    "primary": [
-      "Knight"
-    ],
-    "armour": [
-      "Democracy Protects"
-    ]
-  },
-  "helldiversMobilize": {
-    "booster": [
-      {"name": "Hellpod Space Optimization", "src": "./boosters/Hellpod_Space_Optimization_Booster.webp"},
-      {"name": "Vitality Enhancement", "src": "./boosters/Vitality_Enhancement_Booster.webp"},
-      {"name": "UAV Recon Booster", "src": "./boosters/UAV_Recon_Booster_Booster.webp"},
-      {"name": "Stamina Enhancement", "src": "./boosters/Stamina_Enhancement_Booster.webp"},
-      {"name": "Muscle Enhancement", "src": "./boosters/Muscle_Enhancement_Booster.webp"},
-      {"name": "Increased Reinforcement Budget", "src": "./boosters/Increased_Reinforcement_Budget_Booster.webp"}
-    ],
-    "primary": [
-      "Punisher",
-      "Diligence",
-      "Defender",
-      "Breaker",
-      "Scythe",
-      "Liberator Penetrator",
-      "Diligence Counter Sniper",
-      "Slugger",
-      "Breaker Spray & Pray",
-      "Scorcher"
-    ],
-    "secondary": [
-      "Redeemer"
-    ],
-    "grenade": [
-      "Frag",
-      "Impact",
-      "Smoke"
-    ],
-    "armour": [
-      "Scout",
-      "Fortified",
-      "Engineering Kit",
-      "Med-Kit",
-      "Democracy Protects"
-    ]
-  },
-  "steeledVeterans": {
-    "booster": [
-      {"name": "Flexible Reinforcement Budget", "src": "./boosters/Flexible_Reinforcement_Budget_Booster.webp"}
-    ],
-    "primary": [
-      "Liberator Consussive",
-      "Breaker Incendiary",
-      "Dominator"
-    ],
-    "secondary": [
-      "Senator"
-    ],
-    "grenade": [
-      "Incendiary"    
-    ],
-    "armour": [
-      "Servo-Assisted"
-    ]
-  },
-  "cuttingEdge": {
-    "booster": [
-      {"name": "Localization Confusion", "src": "./boosters/Localization_Confusion_Booster_Booster.webp"}
-    ],
-    "primary": [
-      "Sickle",
-      "Punisher Plasma",
-      "Blitzer"
-    ],
-    "secondary": [
-      "Dagger"
-    ],
-    "grenade": [
-      "Stun"    
-    ],
-    "armour": [
-      "Electrical Conduit"
-    ]
-  }
+  "packages": [
+    {
+      "name": "base",
+      "primary": [
+        "Liberator"
+      ],
+      "secondary": [
+        "Peacemaker"
+      ],
+      "grenade": [
+        "High Explosive"
+      ]
+    },
+    {
+      "name": "Super Citizen",
+      "primary": [
+        "Knight"
+      ],
+      "armour": [
+        "Democracy Protects"
+      ]
+    },
+    {
+      "name": "Helldivers Mobilize",
+      "booster": [
+        {"name": "Hellpod Space Optimization", "src": "./boosters/Hellpod_Space_Optimization_Booster.webp"},
+        {"name": "Vitality Enhancement", "src": "./boosters/Vitality_Enhancement_Booster.webp"},
+        {"name": "UAV Recon Booster", "src": "./boosters/UAV_Recon_Booster_Booster.webp"},
+        {"name": "Stamina Enhancement", "src": "./boosters/Stamina_Enhancement_Booster.webp"},
+        {"name": "Muscle Enhancement", "src": "./boosters/Muscle_Enhancement_Booster.webp"},
+        {"name": "Increased Reinforcement Budget", "src": "./boosters/Increased_Reinforcement_Budget_Booster.webp"}
+      ],
+      "primary": [
+        "Punisher",
+        "Diligence",
+        "Defender",
+        "Breaker",
+        "Scythe",
+        "Liberator Penetrator",
+        "Diligence Counter Sniper",
+        "Slugger",
+        "Breaker Spray & Pray",
+        "Scorcher"
+      ],
+      "secondary": [
+        "Redeemer"
+      ],
+      "grenade": [
+        "Frag",
+        "Impact",
+        "Smoke"
+      ],
+      "armour": [
+        "Scout",
+        "Fortified",
+        "Engineering Kit",
+        "Med-Kit",
+        "Democracy Protects"
+      ]
+    },
+    {
+      "name": "Steeled Veterans",
+      "booster": [
+        {"name": "Flexible Reinforcement Budget", "src": "./boosters/Flexible_Reinforcement_Budget_Booster.webp"}
+      ],
+      "primary": [
+        "Liberator Consussive",
+        "Breaker Incendiary",
+        "Dominator"
+      ],
+      "secondary": [
+        "Senator"
+      ],
+      "grenade": [
+        "Incendiary"    
+      ],
+      "armour": [
+        "Servo-Assisted"
+      ]
+    },
+    {
+      "name": "Cutting Edge",
+      "booster": [
+        {"name": "Localization Confusion", "src": "./boosters/Localization_Confusion_Booster_Booster.webp"}
+      ],
+      "primary": [
+        "Sickle",
+        "Punisher Plasma",
+        "Blitzer"
+      ],
+      "secondary": [
+        "Dagger"
+      ],
+      "grenade": [
+        "Stun"    
+      ],
+      "armour": [
+        "Electrical Conduit"
+      ]
+    },
+    {
+      "name": "Democratic Detonation",
+      "booster": [
+        {"name": "Expert Extraction Pilot", "src": "./boosters/ExpertPilotBooster.webp"}
+      ],
+      "primary": [
+        "Adjudicator",
+        "Eruptor"
+      ],
+      "secondary": [
+        "Grenade Pistol"
+      ],
+      "grenade": [
+        "Thermite"    
+      ],
+      "armour": [
+        "Engineering Kit",
+        "Fortified",
+        "Servo-Assisted"
+      ]
+    }
+  ]
 }
