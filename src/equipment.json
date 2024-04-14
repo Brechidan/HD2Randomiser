@@ -1,5 +1,5 @@
 {
-  "release": "1.000.104",
+  "release": "1.000.202",
   "stratagems": [
     {"name": "Machine Gun", "level": 0, "src": "./stratagems/supply/weapons/MG-43icon.webp"},
     {"name": "Anti-Material Rifle", "level": 2, "src": "./stratagems/supply/weapons/APW-1icon.webp"},
