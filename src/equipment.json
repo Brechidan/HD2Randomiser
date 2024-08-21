@@ -1,5 +1,5 @@
 {
-  "release": "1.000.202",
+  "release": "1.001.004",
   "stratagems": [
     {"name": "Machine Gun", "level": 0, "src": "./stratagems/supply/weapons/MG-43icon.webp"},
     {"name": "Anti-Material Rifle", "level": 2, "src": "./stratagems/supply/weapons/APW-1icon.webp"},
@@ -50,7 +50,10 @@
     {"name": "EMS Mortar Sentry","level": 20, "src": "./stratagems/defensive/EMSmortaricon.webp"},
     {"name": "Patriot Exosuit", "level": 25, "src": "./stratagems/supply/vehicles/EXO45icon.webp"},
     {"name": "Quasar Cannon", "level": 18, "src": "./stratagems/supply/weapons/LAS99Icon.webp"},
-    {"name": "Heavy Machine Gun", "level": 12, "src": "./stratagems/supply/weapons/MG206Icon.webp"}
+    {"name": "Heavy Machine Gun", "level": 12, "src": "./stratagems/supply/weapons/MG206Icon.webp"},
+    {"name": "Emancipator Exosuit", "level": 25, "src": "./stratagems/supply/vehicles/EXO49icon.webp"},
+    {"name": "Commando", "level": 15, "src": "./stratagems/supply/weapons/CommandoIcon.webp"},
+    {"name": "Anti-Tank Mines", "level": 15, "src": "./stratagems/defensive/MD17icon.webp"}
   ],
   "packages": [
     {
@@ -171,6 +174,62 @@
         "Engineering Kit",
         "Fortified",
         "Servo-Assisted"
+      ]
+    },
+    {
+      "name": "Polar Patriots",
+      "booster": [
+        {"name": "Motivational Shocks", "src": "./boosters/Motivational_Shocks_Booster_Icon.webp"}
+      ],
+      "primary": [
+        "Tenderizer",
+        "Pummeler",
+        "Purifier"
+      ],
+      "secondary": [
+        "Verdict"
+      ],
+      "grenade": [
+        "Incendiary Impact"    
+      ],
+      "armour": [
+        "Servo-Assisted",
+        "Fortified",
+        "Scout"
+      ]
+    },
+    {
+      "name": "Viper Commandos",
+      "booster": [
+        {"name": "Experimental Infusion", "src": "./boosters/Experimental_Infusion_Booster_Icon.webp"}
+      ],
+      "primary": [
+        "Liberator Carbine"
+      ],
+      "secondary": [
+        "Bushwhacker"
+      ],
+      "grenade": [
+        "Throwing Knife"    
+      ],
+      "armour": [
+        "Peak Physique"
+      ]
+    },
+    {
+      "name": "Freedom's Flame",
+      "booster": [
+        {"name": "Firebomb Hellpods", "src": "./boosters/Firebomb_Hellpods_Booster_Icon.webp"}
+      ],
+      "primary": [
+        "Cookout",
+        "Torcher"
+      ],
+      "secondary": [
+        "Crisper"
+      ],
+      "armour": [
+        "Inflammable"
       ]
     }
   ]
