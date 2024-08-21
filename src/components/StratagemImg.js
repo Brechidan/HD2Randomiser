@@ -12,7 +12,7 @@ export default function StratagemImg(props) {
   return (<>
     <IconButton className="EquipmentBox" onClick={onClick} style={{ border: '2px solid black', backgroundColor: theme.menuColors.equipmentBackgroundColor, borderRadius: 0, padding: 0 }}>
       <div style={{ margin: '1px', display: 'flex', justifyItems: 'center' }}>
-        <img alt={`${stratagem.name} icon`} src={stratagem.src} style={{ height: isSmall ? '35px':'55px', objectFit: 'scale-down' }} {...props}/>
+        <img alt={`${stratagem.name} icon`} src={stratagem.src} style={{ height: isSmall ? '35px':'45px', padding: '5px' }} {...props}/>
       </div>
     </IconButton>
   </>)
