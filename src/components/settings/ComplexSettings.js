@@ -10,16 +10,16 @@ import {boosters, primarys, secondarys, grenades, armours, defensive, offensive,
 
 const createSelectedObj = (selection) => {
   const selected = {
-    strats: {},
+    stratagems: {},
     booster: {},
     primary: {},
     secondary: {},
     grenade: {},
     armour: {}
   }
-  defensive.forEach((item) => selected.strats[item.name] = selection)
-  offensive.forEach((item) => selected.strats[item.name] = selection)
-  supply.forEach((item) => selected.strats[item.name] = selection)
+  defensive.forEach((item) => selected.stratagems[item.name] = selection)
+  offensive.forEach((item) => selected.stratagems[item.name] = selection)
+  supply.forEach((item) => selected.stratagems[item.name] = selection)
   boosters.forEach((item) => selected.booster[item.name] = selection)
   primarys.forEach((item) => selected.primary[item] = selection)
   secondarys.forEach((item) => selected.secondary[item] = selection)
@@ -79,9 +79,9 @@ export default function ComplexSettings(props) {
             <HD2Tab label="Defensive" value="3" />
           </HD2Tabs>
         </Box>
-        <TabPanel value="1"><Stack>{supply.map((item, index) => <FormControlLabel key={index} control={<HD2Checkbox checked={selected.strats[item.name]} onChange={(e) => handleChangeSelected(e, 'strats', item.name)}/>} label={item.name}/>)}</Stack></TabPanel>
-        <TabPanel value="2"><Stack>{offensive.map((item, index) => <FormControlLabel key={index} control={<HD2Checkbox checked={selected.strats[item.name]} onChange={(e) => handleChangeSelected(e, 'strats', item.name)}/>} label={item.name}/>)}</Stack></TabPanel>
-        <TabPanel value="3"><Stack>{defensive.map((item, index) => <FormControlLabel key={index} control={<HD2Checkbox checked={selected.strats[item.name]} onChange={(e) => handleChangeSelected(e, 'strats', item.name)}/>} label={item.name}/>)}</Stack></TabPanel>
+        <TabPanel value="1"><Stack>{supply.map((item, index) => <FormControlLabel key={index} control={<HD2Checkbox checked={selected.stratagems[item.name]} onChange={(e) => handleChangeSelected(e, 'stratagems', item.name)}/>} label={item.name}/>)}</Stack></TabPanel>
+        <TabPanel value="2"><Stack>{offensive.map((item, index) => <FormControlLabel key={index} control={<HD2Checkbox checked={selected.stratagems[item.name]} onChange={(e) => handleChangeSelected(e, 'stratagems', item.name)}/>} label={item.name}/>)}</Stack></TabPanel>
+        <TabPanel value="3"><Stack>{defensive.map((item, index) => <FormControlLabel key={index} control={<HD2Checkbox checked={selected.stratagems[item.name]} onChange={(e) => handleChangeSelected(e, 'stratagems', item.name)}/>} label={item.name}/>)}</Stack></TabPanel>
         </TabContext>
       </TabPanel>
       <TabPanel value="2"><Stack>{boosters.map((item, index) => <FormControlLabel key={index} control={<HD2Checkbox checked={selected.booster[item.name]} onChange={(e) => handleChangeSelected(e, 'booster', item.name)}/>} label={item.name}/>)}</Stack></TabPanel>

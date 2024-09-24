@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react"
-import { stratagems } from "../../equipmentLists"
 import { FormControlLabel, FormGroup } from "@mui/material";
 import HD2Switch from "../HD2Switch";
 import HD2TextField from "../HD2TextField";
@@ -37,7 +36,7 @@ export default function SimpleSettings({UpdateSettings, SetBadSettings, UpdateLe
     const packages = equipment.packages.filter((val, index) => packagesActive[index])
 
     const selected = {
-      strats: stratagems,
+      stratagems: {},
       booster: {},
       primary: {},
       secondary: {},
@@ -52,7 +51,7 @@ export default function SimpleSettings({UpdateSettings, SetBadSettings, UpdateLe
           aPackage[type].forEach((item) => {
             if (!items.includes(item)) {
               items.push(item)
-              selected[type][type === 'booster' ? item.name : item] = item
+              selected[type][type === 'booster' || type === 'stratagems' ? item.name : item] = item
             }
           })
         }
@@ -64,8 +63,7 @@ export default function SimpleSettings({UpdateSettings, SetBadSettings, UpdateLe
     addItems('secondary')
     addItems('grenade')
     addItems('armour')
-
-    console.log(selected.armour);
+    addItems('stratagems')
 
     UpdateSettings(selected)
   // eslint-disable-next-line

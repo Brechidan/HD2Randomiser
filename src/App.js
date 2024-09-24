@@ -78,7 +78,12 @@ function App() {
   }
 
   const getStratSelection = (choosenStrats, logicSettings) => {
-    const stratagems = simple ? equipment.stratagems.filter(item => item.level <= parseInt(level)) : equipment.stratagems.filter(item => selection.strats[item.name])
+    let _stratagems;
+    if (simple) {
+      _stratagems = Object.keys(selection['stratagems']).map((name => selection['stratagems'][name])).filter(item => item.level <= parseInt(level))
+    } else {
+      _stratagems = Object.keys(selection['stratagems']).filter(name => selection['stratagems'][name]).map(name => allEquipment['strats'][name])
+    }
 
     const stratCount = {
       defensive: 0,
@@ -111,7 +116,7 @@ function App() {
       stratCount[getType(strat.src)]++
     });
 
-    return stratagems.filter(item => choosenStrats.indexOf(item) === -1 && stratCount[getType(item.src)] < logicSettings[getType(item.src)])
+    return _stratagems.filter(item => choosenStrats.indexOf(item) === -1 && stratCount[getType(item.src)] < logicSettings[getType(item.src)])
   }
 
   const handleRandomise = () => {
@@ -265,6 +270,13 @@ function App() {
           <Typography sx={{fontFamily: 'Verdana'}} variant="body1">
             {`Thanks for checking out my randomiser :) hope you like it. The source code is `}<a href="https://github.com/Brechidan/HD2Randomiser">here</a>{`. If you find any bugs/issues please DM me or add an issue on the github.
             Font (Name Smile) from `}<a href="https://www.dafont.com/name-smile.font">here</a>{`, created by Chequered Ink.`}
+          </Typography>
+          <br/>
+          <Typography sx={{fontFamily: 'Verdana'}} variant="body1">
+          {`*'Simple' settings takes player level into account, while 'Complex' ignores it.`}
+          </Typography>
+          <Typography sx={{fontFamily: 'Verdana'}} variant="body1">
+          {`**Stratagems in 'simple settings' are tied to content packs. Stratagems unlocked at the ship terminal are classified as 'base' while items like the 'Sterilizer' are under their warbond (i.e. the 'Sterilizer' it is under 'Chemical Agents').`}
           </Typography>
         </DialogContent>
         <DialogActions>

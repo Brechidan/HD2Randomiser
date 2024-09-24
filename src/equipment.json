@@ -1,60 +1,5 @@
 {
-  "release": "1.001.004",
-  "stratagems": [
-    {"name": "Machine Gun", "level": 0, "src": "./stratagems/supply/weapons/MG-43icon.webp"},
-    {"name": "Anti-Material Rifle", "level": 2, "src": "./stratagems/supply/weapons/APW-1icon.webp"},
-    {"name": "Stalwart", "level": 2, "src": "./stratagems/supply/weapons/M-105icon.webp"},
-    {"name": "Expendable Anti-Tank", "level": 3, "src": "./stratagems/supply/weapons/EAT-17icon.webp"},
-    {"name": "Recoilless Rifle", "level": 5, "src": "./stratagems/supply/weapons/GR-8icon.webp"},
-    {"name": "Flamethrower", "level": 10, "src": "./stratagems/supply/weapons/FLAM-40icon.webp"},
-    {"name": "Autocannon", "level": 10, "src": "./stratagems/supply/weapons/AC-8icon.webp"},
-    {"name": "Railgun", "level": 20, "src": "./stratagems/supply/weapons/RS-422icon.webp"},
-    {"name": "Spear", "level": 20, "src": "./stratagems/supply/weapons/FAF-14icon.webp"},
-    {"name": "Orbital Gatling Barrage", "level": 2, "src": "./stratagems/offensive/orbital/OrbitalGatlingicon.webp"},
-    {"name": "Orbital Airburst Strike", "level": 5, "src": "./stratagems/offensive/orbital/OrbitalAirbursticon.webp"},
-    {"name": "Orbital 120 MM HE Barrage", "level": 5, "src": "./stratagems/offensive/orbital/Orbital120icon.webp"},
-    {"name": "Orbital 380 MM HE Barrage", "level": 8, "src": "./stratagems/offensive/orbital/Orbital380icon.webp"},
-    {"name": "Orbital Walking Barrage", "level": 10, "src": "./stratagems/offensive/orbital/OrbitalWalkingicon.webp"},
-    {"name": "Orbital Laser Strike", "level": 15, "src": "./stratagems/offensive/orbital/OrbitalLasericon.webp"},
-    {"name": "Orbital Railcannon Strike", "level": 20, "src": "./stratagems/offensive/orbital/OrbitalRailcannonicon.webp"},
-    {"name": "Eagle Strafing Run", "level": 2, "src": "./stratagems/offensive/eagle/EagleStrafingicon.webp"},
-    {"name": "Eagle Airstrike", "level": 2, "src": "./stratagems/offensive/eagle/EagleAirstrikeicon.webp"},
-    {"name": "Eagle Cluster Bomb", "level": 3, "src": "./stratagems/offensive/eagle/EagleClusterbombicon.webp"},
-    {"name": "Eagle Napalm Airstrike", "level": 5, "src": "./stratagems/offensive/eagle/EagleNapalmicon.webp"},
-    {"name": "Jump Pack", "level": 8, "src": "./stratagems/supply/backpacks/LIFT-850icon.webp"},
-    {"name": "Eagle Smoke Strike", "level": 8, "src": "./stratagems/offensive/eagle/EagleSmokeicon.webp"},
-    {"name": "Eagle 110 MM Rocket Pods", "level": 10, "src": "./stratagems/offensive/eagle/EagleRocketpodicon.webp"},
-    {"name": "Eagle 500 KG Bomb", "level": 15, "src": "./stratagems/offensive/eagle/Eagle500icon.webp"},
-    {"name": "Orbital Precision Strike", "level": 0, "src": "./stratagems/offensive/orbital/OrbitalPrecisionicon.webp"},
-    {"name": "Orbital Gas Strike", "level": 2, "src": "./stratagems/offensive/orbital/OrbitalGasicon.webp"},
-    {"name": "Orbital EMS Strike", "level": 5, "src": "./stratagems/offensive/orbital/OrbitalEMSicon.webp"},
-    {"name": "Orbital Smoke Strike", "level": 8, "src": "./stratagems/offensive/orbital/OrbitalSmokeicon.webp"},
-    {"name": "HMG Emplacement", "level": 10, "src": "./stratagems/defensive/HMGTurreticon.webp"},
-    {"name": "Shield Generator Relay", "level": 10, "src": "./stratagems/defensive/Shieldrelayicon.webp"},
-    {"name": "Tesla Tower", "level": 15, "src": "./stratagems/defensive/Teslaicon.webp"},
-    {"name": "Anti-Personnel Minefield", "level": 2, "src": "./stratagems/defensive/Minefieldicon.webp"},
-    {"name": "Supply Pack", "level": 2, "src": "./stratagems/supply/backpacks/B-1icon.webp"},
-    {"name": "Grenade Launcher", "level": 5, "src": "./stratagems/supply/weapons/GL-21icon.webp"},
-    {"name": "Laser Cannon", "level": 5, "src": "./stratagems/supply/weapons/LAS-98icon.webp"},
-    {"name": "Incendiary Mines", "level": 8, "src": "./stratagems/defensive/Fireminefieldicon.webp"},
-    {"name": "Guard Dog Laser", "level": 10, "src": "./stratagems/supply/backpacks/AX-LAS-5icon.webp"},
-    {"name": "Ballistic Shield Backpack", "level": 12, "src": "./stratagems/supply/backpacks/SH-20icon.webp"},
-    {"name": "Arc Thrower", "level": 15, "src": "./stratagems/supply/weapons/ARC-3icon.webp"},
-    {"name": "Shield Generator Pack", "level": 20, "src": "./stratagems/supply/backpacks/SH-32icon.webp"},
-    {"name": "Machine Gun Sentry", "level": 2, "src": "./stratagems/defensive/MGsentryicon.webp"},
-    {"name": "Gatling Sentry", "level": 5, "src": "./stratagems/defensive/Gatlingsentryicon.webp"},
-    {"name": "Mortar Sentry", "level": 8, "src": "./stratagems/defensive/Mortarsentryicon.webp"},
-    {"name": "Guard Dog Liberator", "level": 10, "src": "./stratagems/supply/backpacks/AX-AR-23icon.webp"},
-    {"name": "Autocannon Sentry", "level": 13, "src": "./stratagems/defensive/Autocannoasentryicon.webp"},
-    {"name": "Rocket Sentry", "level": 15, "src": "./stratagems/defensive/Missilesentryicon.webp"},
-    {"name": "EMS Mortar Sentry","level": 20, "src": "./stratagems/defensive/EMSmortaricon.webp"},
-    {"name": "Patriot Exosuit", "level": 25, "src": "./stratagems/supply/vehicles/EXO45icon.webp"},
-    {"name": "Quasar Cannon", "level": 18, "src": "./stratagems/supply/weapons/LAS99Icon.webp"},
-    {"name": "Heavy Machine Gun", "level": 12, "src": "./stratagems/supply/weapons/MG206Icon.webp"},
-    {"name": "Emancipator Exosuit", "level": 25, "src": "./stratagems/supply/vehicles/EXO49icon.webp"},
-    {"name": "Commando", "level": 15, "src": "./stratagems/supply/weapons/CommandoIcon.webp"},
-    {"name": "Anti-Tank Mines", "level": 15, "src": "./stratagems/defensive/MD17icon.webp"}
-  ],
+  "release": "1.001.102",
   "packages": [
     {
       "name": "base",
@@ -66,6 +11,62 @@
       ],
       "grenade": [
         "High Explosive"
+      ],
+      "stratagems": [
+        {"name": "Machine Gun", "level": 0, "src": "./stratagems/supply/weapons/MG-43icon.webp"},
+        {"name": "Anti-Material Rifle", "level": 2, "src": "./stratagems/supply/weapons/APW-1icon.webp"},
+        {"name": "Stalwart", "level": 2, "src": "./stratagems/supply/weapons/M-105icon.webp"},
+        {"name": "Expendable Anti-Tank", "level": 3, "src": "./stratagems/supply/weapons/EAT-17icon.webp"},
+        {"name": "Recoilless Rifle", "level": 5, "src": "./stratagems/supply/weapons/GR-8icon.webp"},
+        {"name": "Flamethrower", "level": 10, "src": "./stratagems/supply/weapons/FLAM-40icon.webp"},
+        {"name": "Autocannon", "level": 10, "src": "./stratagems/supply/weapons/AC-8icon.webp"},
+        {"name": "Railgun", "level": 20, "src": "./stratagems/supply/weapons/RS-422icon.webp"},
+        {"name": "Spear", "level": 20, "src": "./stratagems/supply/weapons/FAF-14icon.webp"},
+        {"name": "Orbital Gatling Barrage", "level": 2, "src": "./stratagems/offensive/orbital/OrbitalGatlingicon.webp"},
+        {"name": "Orbital Airburst Strike", "level": 5, "src": "./stratagems/offensive/orbital/OrbitalAirbursticon.webp"},
+        {"name": "Orbital 120 MM HE Barrage", "level": 5, "src": "./stratagems/offensive/orbital/Orbital120icon.webp"},
+        {"name": "Orbital 380 MM HE Barrage", "level": 8, "src": "./stratagems/offensive/orbital/Orbital380icon.webp"},
+        {"name": "Orbital Walking Barrage", "level": 10, "src": "./stratagems/offensive/orbital/OrbitalWalkingicon.webp"},
+        {"name": "Orbital Laser Strike", "level": 15, "src": "./stratagems/offensive/orbital/OrbitalLasericon.webp"},
+        {"name": "Orbital Railcannon Strike", "level": 20, "src": "./stratagems/offensive/orbital/OrbitalRailcannonicon.webp"},
+        {"name": "Eagle Strafing Run", "level": 2, "src": "./stratagems/offensive/eagle/EagleStrafingicon.webp"},
+        {"name": "Eagle Airstrike", "level": 2, "src": "./stratagems/offensive/eagle/EagleAirstrikeicon.webp"},
+        {"name": "Eagle Cluster Bomb", "level": 3, "src": "./stratagems/offensive/eagle/EagleClusterbombicon.webp"},
+        {"name": "Eagle Napalm Airstrike", "level": 5, "src": "./stratagems/offensive/eagle/EagleNapalmicon.webp"},
+        {"name": "Jump Pack", "level": 8, "src": "./stratagems/supply/backpacks/LIFT-850icon.webp"},
+        {"name": "Eagle Smoke Strike", "level": 8, "src": "./stratagems/offensive/eagle/EagleSmokeicon.webp"},
+        {"name": "Eagle 110 MM Rocket Pods", "level": 10, "src": "./stratagems/offensive/eagle/EagleRocketpodicon.webp"},
+        {"name": "Eagle 500 KG Bomb", "level": 15, "src": "./stratagems/offensive/eagle/Eagle500icon.webp"},
+        {"name": "Orbital Precision Strike", "level": 0, "src": "./stratagems/offensive/orbital/OrbitalPrecisionicon.webp"},
+        {"name": "Orbital Gas Strike", "level": 2, "src": "./stratagems/offensive/orbital/OrbitalGasicon.webp"},
+        {"name": "Orbital EMS Strike", "level": 5, "src": "./stratagems/offensive/orbital/OrbitalEMSicon.webp"},
+        {"name": "Orbital Smoke Strike", "level": 8, "src": "./stratagems/offensive/orbital/OrbitalSmokeicon.webp"},
+        {"name": "HMG Emplacement", "level": 10, "src": "./stratagems/defensive/HMGTurreticon.webp"},
+        {"name": "Shield Generator Relay", "level": 10, "src": "./stratagems/defensive/Shieldrelayicon.webp"},
+        {"name": "Tesla Tower", "level": 15, "src": "./stratagems/defensive/Teslaicon.webp"},
+        {"name": "Anti-Personnel Minefield", "level": 2, "src": "./stratagems/defensive/Minefieldicon.webp"},
+        {"name": "Supply Pack", "level": 2, "src": "./stratagems/supply/backpacks/B-1icon.webp"},
+        {"name": "Grenade Launcher", "level": 5, "src": "./stratagems/supply/weapons/GL-21icon.webp"},
+        {"name": "Laser Cannon", "level": 5, "src": "./stratagems/supply/weapons/LAS-98icon.webp"},
+        {"name": "Incendiary Mines", "level": 8, "src": "./stratagems/defensive/Fireminefieldicon.webp"},
+        {"name": "Guard Dog Laser", "level": 10, "src": "./stratagems/supply/backpacks/AX-LAS-5icon.webp"},
+        {"name": "Ballistic Shield Backpack", "level": 12, "src": "./stratagems/supply/backpacks/SH-20icon.webp"},
+        {"name": "Arc Thrower", "level": 15, "src": "./stratagems/supply/weapons/ARC-3icon.webp"},
+        {"name": "Shield Generator Pack", "level": 20, "src": "./stratagems/supply/backpacks/SH-32icon.webp"},
+        {"name": "Machine Gun Sentry", "level": 2, "src": "./stratagems/defensive/MGsentryicon.webp"},
+        {"name": "Gatling Sentry", "level": 5, "src": "./stratagems/defensive/Gatlingsentryicon.webp"},
+        {"name": "Mortar Sentry", "level": 8, "src": "./stratagems/defensive/Mortarsentryicon.webp"},
+        {"name": "Guard Dog Liberator", "level": 10, "src": "./stratagems/supply/backpacks/AX-AR-23icon.webp"},
+        {"name": "Autocannon Sentry", "level": 13, "src": "./stratagems/defensive/Autocannoasentryicon.webp"},
+        {"name": "Rocket Sentry", "level": 15, "src": "./stratagems/defensive/Missilesentryicon.webp"},
+        {"name": "EMS Mortar Sentry","level": 20, "src": "./stratagems/defensive/EMSmortaricon.webp"},
+        {"name": "Patriot Exosuit", "level": 25, "src": "./stratagems/supply/vehicles/EXO45icon.webp"},
+        {"name": "Quasar Cannon", "level": 18, "src": "./stratagems/supply/weapons/LAS99Icon.webp"},
+        {"name": "Heavy Machine Gun", "level": 12, "src": "./stratagems/supply/weapons/MG206Icon.webp"},
+        {"name": "Emancipator Exosuit", "level": 25, "src": "./stratagems/supply/vehicles/EXO49icon.webp"},
+        {"name": "Commando", "level": 15, "src": "./stratagems/supply/weapons/CommandoIcon.webp"},
+        {"name": "Anti-Tank Mines", "level": 15, "src": "./stratagems/defensive/MD17icon.webp"},
+        {"name": "Orbital Napalm Barrage", "level": 18, "src": "./stratagems/offensive/orbital/Orbital_Napalm_Barrage_Stratagem_Icon.webp"}
       ]
     },
     {
@@ -230,6 +231,22 @@
       ],
       "armour": [
         "Inflammable"
+      ]
+    },
+    {
+      "name": "Chemical Agents",
+      "secondary": [
+        "Stim Pistol"
+      ],
+      "grenade": [
+        "Gas"    
+      ],
+      "armour": [
+        "Advanced Filtration"
+      ],
+      "stratagems": [
+        {"name": "Sterilizer", "level": 0, "src": "./stratagems/supply/weapons/Sterilizer_Stratagem_Icon.png"},
+        {"name": "Guard Dog Dog Breath", "level": 0, "src": "./stratagems/supply/backpacks/Guard_Dog_Dog_Breath_Stratagem_Icon.png"}
       ]
     }
   ]

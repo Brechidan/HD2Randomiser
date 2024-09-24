@@ -26,47 +26,48 @@ const secondarys = getItems('secondary')
 const grenades = getItems('grenade')
 const armours = getItems('armour')
 
-const defensive = []
-
-const offensive = []
-const eagle = []
-const orbital = []
-
-const supply = []
-const weapons = []
-const vehicles = []
-const backpacks = []
-
-// simple look thru img path for item type and place in correct array
-equipment.stratagems.forEach((item) => {
-  if (item.src.includes('defensive')) {
-    defensive.push(item)
-  } else if (item.src.includes('offensive')) {
-    offensive.push(item)
-    if (item.src.includes('eagle')) {
-      eagle.push(item)
-    } else if (item.src.includes('orbital')) {
-      orbital.push(item)
+const stratagems = getItems('stratagems')
+stratagems.forEach(stratagem => {
+  let type;
+  if (stratagem.src.includes('defensive')) {
+    type = 'defensive';
+  } else if (stratagem.src.includes('offensive')) {
+    type = 'offensive';
+    if (stratagem.src.includes('eagle')) {
+      type = 'offensive-eagle';
+    } else if (stratagem.src.includes('orbital')) {
+      type = 'offensive-orbital';
     } else {
-      console.warn(`Unknown Offensive Item Type - ${item}`);
+      console.warn(`Unknown Offensive Item Type - ${stratagem}`);
     }
-  } else if (item.src.includes('supply')) {
-    supply.push(item)
-    if (item.src.includes('weapons')) {
-      weapons.push(item)
-    } else if (item.src.includes('vehicles')) {
-      vehicles.push(item)
-    } else if (item.src.includes('backpacks')) {
-      backpacks.push(item)
+  } else if (stratagem.src.includes('supply')) {
+    type = 'supply';
+    if (stratagem.src.includes('weapons')) {
+      type = 'supply-weapons';
+    } else if (stratagem.src.includes('vehicles')) {
+      type = 'supply-vehicles';
+    } else if (stratagem.src.includes('backpacks')) {
+      type = 'supply-backpacks';
     } else {
-      console.warn(`Unknown Supply Item Type - ${item.name} ${item.src}`);
+      console.warn(`Unknown Supply Item Type - ${stratagem.name} ${stratagem.src}`);
     }
   } else {
-    console.warn(`Unknown Item Type - ${item}`);
+    console.warn(`Unknown Item Type - ${stratagem}`);
   }
+  stratagem.type = type
 })
 
-const stratagems = [...defensive, ...offensive, ...supply]
+const defensive = stratagems.filter(item => item.src.includes('defensive'))
+
+const offensive = stratagems.filter(item => item.src.includes('offensive'))
+const eagle = stratagems.filter(item => item.src.includes('eagle'))
+const orbital = stratagems.filter(item => item.src.includes('orbital'))
+
+const supply = stratagems.filter(item => item.src.includes('supply'))
+const weapons = stratagems.filter(item => item.src.includes('weapons'))
+const vehicles = stratagems.filter(item => item.src.includes('vehicles'))
+const backpacks = stratagems.filter(item => item.src.includes('backpacks'))
+
 const allEquipment = {
   strats: {},
   booster: {},
