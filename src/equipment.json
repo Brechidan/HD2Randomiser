@@ -1,16 +1,21 @@
 {
-  "release": "1.001.102",
+  "release": "1.001.201",
   "packages": [
     {
       "name": "base",
       "primary": [
-        "Liberator"
+        "Liberator",
+        "Constitution"
       ],
       "secondary": [
         "Peacemaker"
       ],
       "grenade": [
         "High Explosive"
+      ],
+      "armour": [
+        "Democracy Protects",
+        "Extra Padding"
       ],
       "stratagems": [
         {"name": "Machine Gun", "level": 0, "src": "./stratagems/supply/weapons/MG-43icon.webp"},
@@ -247,6 +252,22 @@
       "stratagems": [
         {"name": "Sterilizer", "level": 0, "src": "./stratagems/supply/weapons/Sterilizer_Stratagem_Icon.png"},
         {"name": "Guard Dog Dog Breath", "level": 0, "src": "./stratagems/supply/backpacks/Guard_Dog_Dog_Breath_Stratagem_Icon.png"}
+      ]
+    },
+    {
+      "name": "Truth Enforcers",
+      "booster": [
+        {"name": "Dead Sprint", "src": "./boosters/Dead_Sprint_Booster_Icon.webp"}
+      ],
+      "primary": [
+        "Halt",
+        "Reprimand"
+      ],
+      "secondary": [
+        "Loyalist"
+      ],
+      "armour": [
+        "Unflinching"
       ]
     }
   ]
