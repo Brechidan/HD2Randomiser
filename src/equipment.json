@@ -71,7 +71,9 @@
         {"name": "Emancipator Exosuit", "level": 25, "src": "./stratagems/supply/vehicles/EXO49icon.webp"},
         {"name": "Commando", "level": 15, "src": "./stratagems/supply/weapons/CommandoIcon.webp"},
         {"name": "Anti-Tank Mines", "level": 15, "src": "./stratagems/defensive/MD17icon.webp"},
-        {"name": "Orbital Napalm Barrage", "level": 18, "src": "./stratagems/offensive/orbital/Orbital_Napalm_Barrage_Stratagem_Icon.webp"}
+        {"name": "Orbital Napalm Barrage", "level": 18, "src": "./stratagems/offensive/orbital/Orbital_Napalm_Barrage_Stratagem_Icon.webp"},
+        {"name": "W.A.S.P. Launcher", "level": 20, "src": "./stratagems/supply/weapons/StA-X3_W.webp"},
+        {"name": "Fast Recon Vehicle", "level": 25, "src": "./stratagems/supply/vehicles/M-102_Fast_Recon_Vehicle_Stratagem_Icon.webp"}
       ]
     },
     {
@@ -81,6 +83,32 @@
       ],
       "armour": [
         "Democracy Protects"
+      ]
+    },
+    {
+      "name": "Superstore",
+      "primary": [
+        "StA-52 Assault Rifle",
+        "PLAS-39 Accelerator Rifle",
+        "StA-11 SMG"
+      ],
+      "secondary": [
+        "Stun Baton"
+      ],
+      "armour": [
+        "Acclimated",
+        "Siege-Ready",
+        "Unflinching",
+        "Advanced Filtration",
+        "Inflammable",
+        "Peak Physique",
+        "Engineering Kit",
+        "Extra Padding",
+        "Med-Kit",
+        "Servo-Assisted",
+        "Fortified",
+        "Med-Kit"
+
       ]
     },
     {
@@ -268,6 +296,23 @@
       ],
       "armour": [
         "Unflinching"
+      ]
+    },
+    {
+      "name": "Urban Legends",
+      "booster": [
+        {"name": "Armed Resupply Pods", "src": "./boosters/Armed_Resupply_Pods_Booster_Icon.svg"}
+      ],
+      "secondary": [
+        "Stun Lance"
+      ],
+      "armour": [
+        "Siege-Ready"
+      ],
+      "stratagems": [
+        {"name": "Directional Shield", "level": 0, "src": "./stratagems/supply/backpacks/SH-51_Directional_Shield_Stratagem_Icon.webp"},
+        {"name": "Flame Sentry", "level": 0, "src": "./stratagems/defensive/A_FLAM-40_Flame_Sentry_Stratagem_Icon.webp"},
+        {"name": "Anti-Tank Emplacement", "level": 0, "src": "./stratagems/defensive/E_AT-12_Anti-Tank_Emplacement_Stratagem_Icon.webp"}
       ]
     }
   ]
